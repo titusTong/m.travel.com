@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ListView,WingBlank } from 'antd-mobile';
+import { ListView,WhiteSpace } from 'antd-mobile';
 import CarouselView from '../../components/Carousel/CarouselView';
 import Search from '../../components/Search/Search';
 import './Index.css'
@@ -150,7 +150,8 @@ class Demo extends React.Component {
     };
 
     return (
-      <div style={{ margin: '0 auto', width: '96%', marginTop:'1rem' }}>
+      <div style={{ margin: '0 auto', width: '96%' }}>
+        <WhiteSpace size="xs" />
         <CarouselView />
         <Search />
         <ListView ref="lv"
@@ -162,9 +163,7 @@ class Demo extends React.Component {
                   className="fortest"
                   style={{
                     height: document.documentElement.clientHeight * 3 / 4,
-                    overflow: 'auto',
-                    border: '1px solid #ddd',
-                    margin: '0.1rem 0',
+                    overflow: 'auto'
                   }}
                   pageSize={4}
                   onScroll={() => { console.log('scroll'); }}

@@ -2,6 +2,7 @@
 import React from 'react';
 import { TabBar, Icon } from 'antd-mobile';
 import Demo from '../../routes/Index/Index';
+import Mine from '../../routes/Mine/Mine';
 
 class TabBarExample extends React.Component {
   constructor(props) {
@@ -10,11 +11,6 @@ class TabBarExample extends React.Component {
       selectedTab: 'blueTab',
       hidden: false,
     };
-  }
-  renderContent = (pageText) => {
-    return (
-      <div></div>
-    );
   }
   render() {
     return (
@@ -64,7 +60,7 @@ class TabBarExample extends React.Component {
             });
           }}
         >
-          {this.renderContent('我的')}
+          <Mine />
         </TabBar.Item>
       </TabBar>
     );
