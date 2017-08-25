@@ -1,5 +1,7 @@
 const path = require('path');
 const pxtorem = require('postcss-pxtorem');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 
 module.exports = function(webpackConfig, env) {
   const svgDirs = [
@@ -23,5 +25,8 @@ module.exports = function(webpackConfig, env) {
     loader: 'svg-sprite',
     include: svgDirs, // 把 svgDirs 路径下的所有 svg 文件交给 svg-sprite-loader 插件处理
   });
+
+
+
   return webpackConfig;
 }

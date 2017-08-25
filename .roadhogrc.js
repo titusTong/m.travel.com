@@ -4,7 +4,7 @@ const path = require( 'path' );
 
 export default {
   entry : "src/index.js" ,
-  disableCSSModules : false ,
+  disableCSSModules : true ,
   publicPath : "/" ,
   theme : "./theme.config.js" ,
   autoprefixer : {

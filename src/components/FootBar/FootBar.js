@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { TabBar, Icon } from 'antd-mobile';
+import Demo from '../../routes/Index/Index';
 
 class TabBarExample extends React.Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class TabBarExample extends React.Component {
           }}
           data-seed="logId"
         >
-          {this.renderContent('生活')}
+          <Demo />
         </TabBar.Item>
         <TabBar.Item
           icon={{uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg'}}
