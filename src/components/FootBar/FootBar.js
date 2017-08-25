@@ -12,6 +12,7 @@ class TabBarExample extends React.Component {
       hidden: false,
     };
   }
+
   render() {
     return (
       <TabBar
