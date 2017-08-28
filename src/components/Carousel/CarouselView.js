@@ -33,7 +33,7 @@ export default class CarouselView extends React.Component {
             <a href="http://www.baidu.com" key={ii} style={hProp}>
               <img
                 src={`https://zos.alipayobjects.com/rmsportal/${ii || 'QcWDkUhvYIVEcvtosxMF'}.png`}
-                style={{ height:'4.24rem' }}
+                style={{ height:'3.5rem' }}
                 alt="icon"
                 onLoad={() => {
                   // fire window resize event to change height

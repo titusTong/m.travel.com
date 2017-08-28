@@ -7,8 +7,7 @@ import './Index.css'
 
 function MyBody(props) {
   return (
-    <div className="am-list-body my-body">
-      <span style={{ display: 'none' }}>you can custom body wrap element</span>
+    <div className="am-list-body my-body" >
       {props.children}
     </div>
   );
@@ -17,8 +16,8 @@ function MyBody(props) {
 const data = [
   {
     img: 'https://zos.alipayobjects.com/rmsportal/dKbkpPXKfvZzWCM.png',
-    title: 'Meet hotel',
-    des: '不是所有的兼职汪都需要风吹日晒',
+    title: 'Meet hotel',// 这个反时间：例如：2017-09-01至2017-09-03
+    des: '不是所有的兼职汪都需要风吹日晒',// 这个是标题
   },
   {
     img: 'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',
@@ -93,15 +92,6 @@ class Demo extends React.Component {
     }, 600);
   }
 
-  // If you use redux, the data maybe at props, you need use `componentWillReceiveProps`
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.dataSource !== this.props.dataSource) {
-  //     this.setState({
-  //       dataSource: this.state.dataSource.cloneWithRowsAndSections(nextProps.dataSource),
-  //     });
-  //   }
-  // }
-
   onEndReached = (event) => {
     // load new data
     // hasMore: from backend data, indicates whether it is the last page, here is false
@@ -120,31 +110,41 @@ class Demo extends React.Component {
   }
 
   render() {
-    const separator = (sectionID, rowID) => (
-      <div key={`${sectionID}-${rowID}`}
-           style={{
-             backgroundColor: '#F5F5F9',
-             height: 8,
-             borderTop: '1px solid #ECECED',
-             borderBottom: '1px solid #ECECED',
-           }}
-      />
-    );
+    // const separator = (sectionID, rowID) => (
+    //   <div key={`${sectionID}-${rowID}`}
+    //        style={{
+    //          backgroundColor: '#F5F5F9',
+    //          height: 8,
+    //          borderTop: '1px solid #ECECED',
+    //          borderBottom: '1px solid #ECECED',
+    //        }}
+    //   />
+    // );
     const row = (rowData, sectionID, rowID) => {
       if (index < 0) {
         index = data.length - 1;
       }
       const obj = data[index--];
       return (
-        <div key={rowID} className="row" >
-          <div className="row-title" >{obj.title}</div>
-          <div style={{ display: '-webkit-box', display: 'flex', padding: '0.3rem 0' }}>
-            <img style={{ height: '1.28rem', marginRight: '0.3rem' }} src={obj.img} alt="icon" />
-            <div className="row-text" >
-              <div style={{ marginBottom: '0.16rem', fontWeight: 'bold' }}>{obj.des}</div>
-              <div><span style={{ fontSize: '0.6rem', color: '#FF6E27' }}>35</span>¥</div>
+        <div key={rowID}>
+          <div className="row" >
+            <div className="row-title" >{obj.title}</div>
+            <div style={{ display: '-webkit-box', display: 'flex', padding: '0.3rem 0' }}>
+              <img style={{ height: '1.28rem', marginRight: '0.3rem' }} src={obj.img} alt="icon" />
+              <div className="row-text" >
+                <div style={{ marginBottom: '0.16rem', fontWeight: 'bold' }}>{obj.des}</div>
+                <div><span style={{ fontSize: '0.6rem', color: '#FF6E27' }}>35</span>¥</div>
+              </div>
             </div>
           </div>
+          <div
+            style={{
+              backgroundColor: '#F5F5F9',
+              height: 8,
+              borderTop: '1px solid #ECECED',
+              borderBottom: '1px solid #ECECED',
+            }}
+          />
         </div>
       );
     };
@@ -154,24 +154,25 @@ class Demo extends React.Component {
         <WhiteSpace size="xs" />
         <CarouselView />
         <Search />
-        <ListView ref="lv"
-                  dataSource={this.state.dataSource}
-
-                  renderBodyComponent={() => <MyBody />}
-                  renderRow={row}
-                  renderSeparator={separator}
-                  className="fortest"
-                  style={{
-                    height: document.documentElement.clientHeight * 3 / 4,
-                    overflow: 'auto'
-                  }}
-                  pageSize={4}
-                  onScroll={() => { console.log('scroll'); }}
-                  scrollRenderAheadDistance={500}
-                  scrollEventThrottle={200}
-                  onEndReached={this.onEndReached}
-                  onEndReachedThreshold={10}
-        />
+        <div className="thisListView">
+          <ListView ref="lv"
+                    dataSource={this.state.dataSource}
+                    renderBodyComponent={() => <MyBody />}
+                    renderRow={row}
+                    //renderSeparator={separator}
+                    className="fortest"
+                    style={{
+                      height: document.documentElement.clientHeight * 3 / 4,
+                      overflow: 'auto'
+                    }}
+                    pageSize={4}
+                    onScroll={() => { console.log('scroll'); }}
+                    scrollRenderAheadDistance={500}
+                    scrollEventThrottle={200}
+                    onEndReached={this.onEndReached}
+                    onEndReachedThreshold={10}
+          />
+        </div>
       </div>
     );
   }
