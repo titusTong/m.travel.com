@@ -162,7 +162,7 @@ class Demo extends React.Component {
                     //renderSeparator={separator}
                     className="fortest"
                     style={{
-                      height: document.documentElement.clientHeight * 3 / 4,
+                      height: '8rem',
                       overflow: 'auto'
                     }}
                     pageSize={4}
