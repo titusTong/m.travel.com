@@ -22,7 +22,8 @@ function checkStatus(response) {
  * @return {object}           An object containing either "data" or "err"
  */
 export default function request(url, options) {
-  return fetch(url, options)
+  let newUrl = `http://47.93.224.33:8001/${url}`;
+  return fetch(newUrl, options)
     .then(checkStatus)
     .then(parseJSON)
     .then(data => ({ data }))
