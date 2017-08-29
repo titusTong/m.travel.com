@@ -31,15 +31,15 @@ class Demo extends React.Component {
   }
 
   componentWillMount() {
-    this.getData();
+    this.getData(index);
   }
 
 
   getData = (page=1) => {
-    this.setState ({
-      isLoading:true
-    })
-    sendFetch('tour/article/list',{page,page_size:10}, 'get')
+    // this.setState ({
+    //   isLoading:true
+    // })
+    sendFetch('tour/article/list',{page,page_size:20}, 'get')
       .then(data=>{
         if(data.code >= 0) {
           if(data.lists.length === 0) {
@@ -59,18 +59,13 @@ class Demo extends React.Component {
   }
 
   onEndReached = (event) => {
-    console.log(this.state.isLoading)
-    // if (this.state.isBlank) {
-    //   console.log(1111111);
-    //   return;
-    // }
-    //console.log('reach end', event);
-
-    // setTimeout(() => {
-    //   //this.getData(++index);
-    //
-    // }, 1000);
-    //this.getData(++index);
+    if(this.state.isLoading) {
+      return
+    }
+    if(this.state.isBlank) {
+      return
+    }
+    this.getData(++index);
   }
 
 
@@ -116,12 +111,12 @@ class Demo extends React.Component {
                       height: '8rem',
                       overflow: 'auto'
                     }}
-                    pageSize={4}
+                    pageSize={10}
                     onScroll={() => { console.log('scroll'); }}
                     scrollRenderAheadDistance={500}
                     scrollEventThrottle={200}
                     onEndReached={this.onEndReached}
-                    onEndReachedThreshold={10}
+                    onEndReachedThreshold={15}
           />
         </div>
       </div>
