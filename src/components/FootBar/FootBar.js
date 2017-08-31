@@ -24,19 +24,11 @@ class TabBarExample extends React.Component {
         <TabBar.Item
           title="活动"
           key="活动"
-          icon={<div style={{
-            width: '0.44rem',
-            height: '0.44rem',
-            background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  0.42rem 0.42rem no-repeat'
-          }}
-          />
+          icon={
+            <Icon type={require('../../assets/earth-c.svg')} />
           }
-          selectedIcon={<div style={{
-            width: '0.44rem',
-            height: '0.44rem',
-            background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  0.42rem 0.42rem no-repeat'
-          }}
-          />
+          selectedIcon={
+            <Icon type={require('../../assets/earth.svg')} />
           }
           selected={this.state.selectedTab === 'blueTab'}
           // badge={1}
@@ -50,8 +42,8 @@ class TabBarExample extends React.Component {
           <Demo />
         </TabBar.Item>
         <TabBar.Item
-          icon={{uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg'}}
-          selectedIcon={{uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg'}}
+          icon={<Icon type={require('../../assets/account.svg')} />}
+          selectedIcon={<Icon type={require('../../assets/account-c.svg')} />}
           title="我的"
           key="我的"
           selected={this.state.selectedTab === 'yellowTab'}

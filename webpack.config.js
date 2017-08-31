@@ -26,6 +26,12 @@ module.exports = function(webpackConfig, env) {
     include: svgDirs, // 把 svgDirs 路径下的所有 svg 文件交给 svg-sprite-loader 插件处理
   });
 
+  // webpackConfig.module.loaders.unshift({
+  //   test: /\.(svg)$/i,
+  //   loader: 'svg-sprite',
+  //   include: path.resolve(__dirname,'src/assets'), // 把 svgDirs 路径下的所有 svg 文件交给 svg-sprite-loader 插件处理
+  // });
+
 
 
   return webpackConfig;

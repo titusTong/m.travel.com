@@ -2,7 +2,7 @@
 import React from 'react';
 import {WhiteSpace, Button} from 'antd-mobile';
 import CarouselView from '../../components/Carousel/CarouselView';
-
+import DetailList from '../../components/DetailList/DetailList';
 
 
 export default class ActiveDetail extends React.Component {
@@ -44,7 +44,7 @@ export default class ActiveDetail extends React.Component {
       <div style={{ width:'100%' }} >
         <WhiteSpace size="xs" />
         <CarouselView />
-
+        <DetailList />
         <div style={styleSheet.btnBar} >
           <Button style={{
                           background:this.state.btnbak,
