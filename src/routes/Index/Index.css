@@ -21,3 +21,18 @@
 .am-list-view-scrollview {
   margin-bottom: 1rem;
 }
+
+.tagPosition {
+  float:right;
+  right:30px;
+  top:0.13rem;
+}
+
+.row-title .am-badge-text {
+  font-size: 0.3rem;
+}
+
+.loading-example .am-activity-indicator {
+  width:1.8rem;
+  margin:0 auto;
+}

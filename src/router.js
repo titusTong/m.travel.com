@@ -1,12 +1,14 @@
 import React from 'react';
 import { Router, Route } from 'dva/router';
-import TabBarExample from './components/FootBar/FootBar';
+import TabBar from './components/FootBar/FootBar';
+import ActiveDetail from './routes/ActiveDetail/ActiveDetail';
 
 function RouterConfig({ history }) {
   return (
     <Router history={history}>
       <div>
-        <Route path="/" component={TabBarExample} />
+        <Route path="/" component={TabBar} />
+        <Route path="/ActiveDetail" component={ActiveDetail} />
       </div>
     </Router>
   );

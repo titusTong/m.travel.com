@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ListView,WhiteSpace,Badge } from 'antd-mobile';
+import { ListView,WhiteSpace,Badge,ActivityIndicator } from 'antd-mobile';
 import CarouselView from '../../components/Carousel/CarouselView';
 import Search from '../../components/Search/Search';
 import sendFetch from '../../utils/fetch';
@@ -32,7 +32,7 @@ class Demo extends React.Component {
   }
 
   componentWillMount() {
-    this.getData(index);
+    this.getData(0);
   }
 
   componentDidMount () {
@@ -44,9 +44,9 @@ class Demo extends React.Component {
 
 
   getData = (page=1) => {
-    // this.setState ({
-    //   isLoading:true
-    // })
+    this.setState ({
+      isLoading:true
+    })
     sendFetch('tour/article/list',{page,page_size:20}, 'get')
       .then(data=>{
         if(data.code >= 0) {
@@ -85,11 +85,10 @@ class Demo extends React.Component {
             <div className="row-title" >
               <span style={{ marginLeft:'0.3rem', color:'#FF6E27',marginRight:'0.3rem', fontSize:34 }} >¥ {projectModel.price}</span>
               {`${projectModel.start_time}至${projectModel.end_time}`}
-              <Badge text={'名额紧缺'} hot={true} />
+              <Badge className="tagPosition" text={'名额紧缺'} hot={true} />
             </div>
-            <div style={{ display: '-webkit-box', display: 'flex',height:'3rem' }}>
-              <img style={{ width:'100%' }} src={projectModel.pic_url} alt="icon" />
-
+            <div>
+              <a style={{ display: '-webkit-box', display: 'flex',height:'3rem' }} href={`#/ActiveDetail?id=${projectModel.id}`} ><img style={{ width:'100%' }} src={projectModel.pic_url} alt="icon" /></a>
             </div>
           </div>
           <div
@@ -112,6 +111,13 @@ class Demo extends React.Component {
           <ListView ref="lv"
                     dataSource={this.state.dataSource}
                     renderBodyComponent={() => <MyBody />}
+                    renderFooter={() => (<div style={{ padding: 30, textAlign: 'center' }}>
+                      {this.state.isLoading ? <div className="loading-example">
+                        <ActivityIndicator
+                          text="Loading..."
+                        />
+                      </div> : '没有更多路线'}
+                    </div>)}
                     renderRow={row}
                     //renderSeparator={separator}
                     className="fortest"
@@ -120,7 +126,6 @@ class Demo extends React.Component {
                       overflow: 'auto'
                     }}
                     pageSize={10}
-                    onScroll={() => { console.log('scroll'); }}
                     scrollRenderAheadDistance={500}
                     scrollEventThrottle={200}
                     onEndReached={this.onEndReached}
