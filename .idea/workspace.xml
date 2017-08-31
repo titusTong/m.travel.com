@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d06046b5-7cd5-4ef4-89d9-9a3f0c1df67c" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/DetailList/DetailList.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/DetailList/DetailList.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/assets/account.svg" afterPath="$PROJECT_DIR$/src/assets/account.svg" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/FootBar/FootBar.js" afterPath="$PROJECT_DIR$/src/components/FootBar/FootBar.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/routes/ActiveDetail/ActiveDetail.js" afterPath="$PROJECT_DIR$/src/routes/ActiveDetail/ActiveDetail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/webpack.config.js" afterPath="$PROJECT_DIR$/webpack.config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/DetailList/DetailList.js" afterPath="$PROJECT_DIR$/src/components/DetailList/DetailList.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,9 +35,11 @@
       <file leaf-file-name="DetailList.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/DetailList/DetailList.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="69">
-              <caret line="3" column="52" lean-forward="true" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-              <folding />
+            <state relative-caret-position="391">
+              <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+              <folding>
+                <element signature="e#1#27#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -145,8 +140,8 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/webpack.config.js" />
         <option value="$PROJECT_DIR$/src/assets/account.svg" />
-        <option value="$PROJECT_DIR$/src/components/DetailList/DetailList.js" />
         <option value="$PROJECT_DIR$/src/components/FootBar/FootBar.js" />
+        <option value="$PROJECT_DIR$/src/components/DetailList/DetailList.js" />
       </list>
     </option>
   </component>
@@ -312,12 +307,12 @@
       <workItem from="1503625879902" duration="11598000" />
       <workItem from="1503885991039" duration="22846000" />
       <workItem from="1504064378692" duration="1759000" />
-      <workItem from="1504086219588" duration="17995000" />
+      <workItem from="1504086219588" duration="18893000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86179000" />
+    <option name="totallyTimeSpent" value="87077000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="0" width="2560" height="1080" extended-state="0" />
@@ -720,9 +715,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/DetailList/DetailList.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="52" lean-forward="true" selection-start-line="3" selection-start-column="52" selection-end-line="3" selection-end-column="52" />
-          <folding />
+        <state relative-caret-position="391">
+          <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
+          <folding>
+            <element signature="e#1#27#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
