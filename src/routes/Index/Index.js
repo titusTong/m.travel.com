@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ListView,WhiteSpace } from 'antd-mobile';
+import { ListView,WhiteSpace,Badge } from 'antd-mobile';
 import CarouselView from '../../components/Carousel/CarouselView';
 import Search from '../../components/Search/Search';
 import sendFetch from '../../utils/fetch';
@@ -26,12 +26,20 @@ class Demo extends React.Component {
       isLoading: false,
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2)=>row1 !== row2,
-      })
+      }),
+      totalHeight:0
     }
   }
 
   componentWillMount() {
     this.getData(index);
+  }
+
+  componentDidMount () {
+    let search = document.querySelector('.am-search').clientHeight;
+    let footBar = document.querySelector('.am-tab-bar-bar').clientHeight;
+    let totalHeight = search + footBar;
+    this.setState({totalHeight})
   }
 
 
@@ -74,19 +82,20 @@ class Demo extends React.Component {
       return (
         <div key={rowID}>
           <div className="row" >
-            <div className="row-title" >{`${projectModel.start_time}至${projectModel.end_time}`}</div>
-            <div style={{ display: '-webkit-box', display: 'flex', padding: '0.3rem 0' }}>
-              <img style={{ height: '1.28rem', marginRight: '0.3rem' }} src={projectModel.pic_url} alt="icon" />
-              <div className="row-text" >
-                <div style={{ marginBottom: '0.16rem', fontWeight: 'bold' }}>{projectModel.title}</div>
-                <div><span style={{ fontSize: '0.6rem', color: '#FF6E27' }}>{projectModel.price}</span>¥</div>
-              </div>
+            <div className="row-title" >
+              <span style={{ marginLeft:'0.3rem', color:'#FF6E27',marginRight:'0.3rem', fontSize:34 }} >¥ {projectModel.price}</span>
+              {`${projectModel.start_time}至${projectModel.end_time}`}
+              <Badge text={'名额紧缺'} hot={true} />
+            </div>
+            <div style={{ display: '-webkit-box', display: 'flex',height:'3rem' }}>
+              <img style={{ width:'100%' }} src={projectModel.pic_url} alt="icon" />
+
             </div>
           </div>
           <div
             style={{
-              backgroundColor: '#F5F5F9',
-              height: 8,
+              backgroundColor: '#ccc',
+              height: 10,
               borderTop: '1px solid #ECECED',
               borderBottom: '1px solid #ECECED',
             }}
@@ -96,9 +105,8 @@ class Demo extends React.Component {
     };
 
     return (
-      <div style={{ margin: '0 auto', width: '96%' }}>
+      <div style={{ margin: '0 auto', width: '100%' }}>
         <WhiteSpace size="xs" />
-        <CarouselView />
         <Search />
         <div className="thisListView">
           <ListView ref="lv"
@@ -108,7 +116,7 @@ class Demo extends React.Component {
                     //renderSeparator={separator}
                     className="fortest"
                     style={{
-                      height: '8rem',
+                      height: document.documentElement.clientHeight-this.state.totalHeight,
                       overflow: 'auto'
                     }}
                     pageSize={10}

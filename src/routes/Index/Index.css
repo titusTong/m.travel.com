@@ -1,6 +1,8 @@
 .row {
-  padding: 0 0.3rem;
   background-color: white;
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
 }
 .row-title {
   height: 0.6rem;
