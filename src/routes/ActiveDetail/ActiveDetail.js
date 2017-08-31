@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {WhiteSpace, Button} from 'antd-mobile';
+import {WhiteSpace, Button, Card} from 'antd-mobile';
 import CarouselView from '../../components/Carousel/CarouselView';
 import DetailList from '../../components/DetailList/DetailList';
 
@@ -44,6 +44,22 @@ export default class ActiveDetail extends React.Component {
       <div style={{ width:'100%' }} >
         <WhiteSpace size="xs" />
         <CarouselView />
+        <Card style={{ borderRadius:0, marginTop:10 }} >
+          <Card.Header
+            title="领队姓名"
+            thumb="https://cloud.githubusercontent.com/assets/1698185/18039916/f025c090-6dd9-11e6-9d86-a4d48a1bf049.png"
+            thumbStyle={{ width:'0.82rem', height:'0.82rem', borderRadius:'50%' }}
+            extra={<span>领队</span>}
+          />
+          <Card.Body>
+            <div>领队电话</div>
+            <div>领队微信</div>
+            <div>出发时间</div>
+            <div>出发地点</div>
+            <div>活动时间</div>
+            <div>活动标题</div>
+          </Card.Body>
+        </Card>
         <DetailList />
         <div style={styleSheet.btnBar} >
           <Button style={{

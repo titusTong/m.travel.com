@@ -10,7 +10,7 @@ export default class DetailList extends React.Component {
   }
   render() {
     return (
-      <div style={{ marginTop: 10, marginBottom: 10 }}>
+      <div style={{ marginTop: 10, marginBottom: '1rem' }}>
         <Accordion className="my-accordion" onChange={this.onChange}>
           <Accordion.Panel header={<div><Icon style={{ marginTop:'0.22rem',float:'left',marginRight:'0.3rem' }} type={require('../../assets/1.svg')} /><span style={{ float:'left' }}>活动概述</span></div>}>
             <List className="my-list">

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ListView,WhiteSpace,Badge,ActivityIndicator } from 'antd-mobile';
+import { ListView,WhiteSpace,Badge,ActivityIndicator,NoticeBar } from 'antd-mobile';
 import CarouselView from '../../components/Carousel/CarouselView';
 import Search from '../../components/Search/Search';
 import sendFetch from '../../utils/fetch';
@@ -32,13 +32,14 @@ class Demo extends React.Component {
   }
 
   componentWillMount() {
-    this.getData(0);
+    this.getData(1);
   }
 
   componentDidMount () {
     let search = document.querySelector('.am-search').clientHeight;
     let footBar = document.querySelector('.am-tab-bar-bar').clientHeight;
-    let totalHeight = search + footBar;
+    let noticeBar = document.querySelector('.noticeBarStyle').clientHeight;
+    let totalHeight = search + footBar + noticeBar;
     this.setState({totalHeight})
   }
 
@@ -106,6 +107,9 @@ class Demo extends React.Component {
     return (
       <div style={{ margin: '0 auto', width: '100%' }}>
         <WhiteSpace size="xs" />
+        <NoticeBar className="noticeBarStyle" style={{ height:'0.82rem' }} marqueeProps={{ loop: true, style: { padding: '0 0.15rem' } }}>
+          Notice: The arrival time of incomes and transfers of Yu &#39;E Bao will be delayed during National Day.
+        </NoticeBar>
         <Search />
         <div className="thisListView">
           <ListView ref="lv"
