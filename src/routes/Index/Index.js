@@ -3,7 +3,7 @@ import React from 'react';
 import { ListView,WhiteSpace,Badge,ActivityIndicator,NoticeBar } from 'antd-mobile';
 import CarouselView from '../../components/Carousel/CarouselView';
 import Search from '../../components/Search/Search';
-import sendFetch from '../../utils/fetch';
+import request from '../../utils/request';
 import './Index.css'
 
 function MyBody(props) {
@@ -48,15 +48,15 @@ class Demo extends React.Component {
     this.setState ({
       isLoading:true
     })
-    sendFetch('tour/article/list',{page,page_size:20}, 'get')
+    request('tour/article/list',{page,page_size:20})
       .then(data=>{
-        if(data.code >= 0) {
-          if(data.lists.length === 0) {
+        if(data.data.code >= 0) {
+          if(data.data.lists.length === 0) {
             this.setState({ isBlank : true })
           }
           this.setState({
             isLoading:false,
-            data:this.state.data.concat(data.lists),
+            data:this.state.data.concat(data.data.lists),
             dataSource:this.getDataSource(this.state.data)
           })
         }
