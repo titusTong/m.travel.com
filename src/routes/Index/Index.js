@@ -32,7 +32,7 @@ class Demo extends React.Component {
   }
 
   componentWillMount() {
-    this.getData(1);
+    this.getData(index);
   }
 
   componentDidMount () {
