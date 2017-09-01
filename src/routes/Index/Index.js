@@ -32,7 +32,7 @@ class Demo extends React.Component {
   }
 
   componentWillMount() {
-    this.getData(index);
+    this.getData(1);
   }
 
   componentDidMount () {
@@ -48,7 +48,7 @@ class Demo extends React.Component {
     this.setState ({
       isLoading:true
     })
-    request('tour/article/list',{page,page_size:20})
+    request('tour/article/list',{page,page_size:20}, 'GET')
       .then(data=>{
         if(data.data.code >= 0) {
           if(data.data.lists.length === 0) {

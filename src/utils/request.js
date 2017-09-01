@@ -21,9 +21,29 @@ function checkStatus(response) {
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(url, options) {
+export default function request(url, params,type) {
   let newUrl = `http://47.93.224.33:8001/${url}`;
-  return fetch(newUrl, options)
+  let options = {
+    method:type,
+    header:{
+      'Accept':'application/json',
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify(params)
+  }
+  if(type==='GET') {
+    if(params) {
+      let paramsArray = [];
+      Object.keys(params).forEach(key => paramsArray.push(key + '=' + encodeURIComponent(params[key])))
+      if(newUrl.search(/\?/)===-1) {
+        newUrl += '?' + paramsArray.join('&')
+      } else {
+        newUrl += '&' + paramsArray.join('&')
+      }
+    }
+    options = {};
+  }
+  return fetch(newUrl,options)
     .then(checkStatus)
     .then(parseJSON)
     .then(data => ({ data }))
