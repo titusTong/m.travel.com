@@ -14,7 +14,7 @@ export default function sendFetch (url, parmas, type, formData,test) {
   if(reg.test(window.location.host)||reg1.test(window.location.host)){
     var newUrl=`http://47.93.224.33:8001/${url}`;
   }else{
-    var newUrl=`/${url}`;
+    var newUrl=`http://47.93.224.33:8001/${url}`;
   }
   if(type=='post') {
     if(!formData) {
