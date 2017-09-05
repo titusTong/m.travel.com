@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d06046b5-7cd5-4ef4-89d9-9a3f0c1df67c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.roadhogrc.mock.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/mock/.gitkeep" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -247,12 +248,12 @@
       <workItem from="1503885991039" duration="22846000" />
       <workItem from="1504064378692" duration="1759000" />
       <workItem from="1504086219588" duration="29166000" />
-      <workItem from="1504592497905" duration="934000" />
+      <workItem from="1504592497905" duration="1056000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98284000" />
+    <option name="totallyTimeSpent" value="98406000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2560" y="0" width="2560" height="1080" extended-state="0" />
