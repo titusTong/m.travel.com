@@ -88,8 +88,9 @@ class Demo extends React.Component {
               {`${projectModel.start_time}至${projectModel.end_time}`}
               <Badge className="tagPosition" text={'名额紧缺'} hot={true} />
             </div>
-            <div>
+            <div style={{ position:'relative' }} >
               <a style={{ display: '-webkit-box', display: 'flex',height:'3rem' }} href={`#/ActiveDetail?id=${projectModel.id}`} ><img style={{ width:'100%' }} src={projectModel.pic_url} alt="icon" /></a>
+              <div className="itemTitle" style={{ position:'absolute', left:0, bottom:'0.15rem' }} >{projectModel.title}</div>
             </div>
           </div>
           <div

@@ -36,3 +36,15 @@
   width:1.8rem;
   margin:0 auto;
 }
+
+
+.itemTitle {
+  color:#fff;
+  font-size: 0.28rem;
+  margin-left: 10%;
+  width:80%;
+  font-weight: 100;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}

@@ -11,7 +11,7 @@ export default class DetailList extends React.Component {
   render() {
     return (
       <div style={{ marginTop: 10 }}>
-        <Accordion style={{ marginBottom: '1rem' }} className="my-accordion" onChange={this.onChange}>
+        <Accordion style={{  }} className="my-accordion" onChange={this.onChange}>
           <Accordion.Panel header={<div><Icon style={{ marginTop:'0.22rem',float:'left',marginRight:'0.3rem' }} type={require('../../assets/1.svg')} /><span style={{ float:'left' }}>活动概述</span></div>}>
             <List className="my-list">
               <List.Item>Content 1</List.Item>
@@ -28,6 +28,7 @@ export default class DetailList extends React.Component {
           <Accordion.Panel header={<div><Icon style={{ marginTop:'0.22rem',float:'left',marginRight:'0.3rem' }} type={require('../../assets/5.svg')} /><span style={{ float:'left' }}>报名须知</span></div>} className="pad">Text text text text text text text text text text text text text text text</Accordion.Panel>
           <Accordion.Panel header={<div><Icon style={{ marginTop:'0.22rem',float:'left',marginRight:'0.3rem' }} type={require('../../assets/6.svg')} /><span style={{ float:'left' }}>报名列表</span></div>} className="pad">Text text text text text text text text text text text text text text text</Accordion.Panel>
         </Accordion>
+        <div style={{ width:'100%', height:'1rem' }} ></div>
       </div>
     );
   }
