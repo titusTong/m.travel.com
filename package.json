@@ -5,7 +5,7 @@
     "build": "roadhog build",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint",
-    "server":"pm2 start ./bin/www --watch"
+    "server": "pm2 start ./bin/www --watch"
   },
   "engines": {
     "install-node": "6.9.2"
