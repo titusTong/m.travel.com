@@ -1,6 +1,7 @@
 import React from 'react';
 import { WhiteSpace, WingBlank, Picker, List, DatePicker, InputItem, Button, Modal } from 'antd-mobile';
 import { createForm } from 'rc-form';
+import request from '../../utils/request';
 import './ShoppingStore.css';
 
 const outlets = [
@@ -40,7 +41,15 @@ const sexArr = [
 const payTypeArr = [
   {label:'微信', value:'微信'},
   {label:'支付宝', value:'支付宝'}
-]
+];
+
+function formatDate(date) {
+  /* eslint no-confusing-arrow: 0 */
+  const pad = n => n < 10 ? `0${n}` : n;
+  const dateStr = `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`;
+  const timeStr = `${pad(date.getHours())}:${pad(date.getMinutes())}`;
+  return `${dateStr} ${timeStr}`;
+}
 
 
 class ShoppingStoreComponent extends React.Component {
@@ -50,6 +59,7 @@ class ShoppingStoreComponent extends React.Component {
       value:null,
       visible:false,
       content:'',
+      buttonLoading:false,
 
     }
   }
@@ -60,10 +70,35 @@ class ShoppingStoreComponent extends React.Component {
 
   }
   onSubmit = () => {
+    this.setState({
+      buttonLoading:true
+    })
     this.props.form.validateFields({ force: true }, (error) => {
       if (!error) {
-
-        console.log(this.props.form.getFieldsValue());
+        let data = this.props.form.getFieldsValue();
+        data.date = data.date.format('YYYY-MM-DD HH:mm');
+        let option = {
+          outlet_name:data.outlet[0],
+          date:data.date.split(' ')[0],
+          time:data.date.split(' ')[1],
+          tourist_num:data.touristNum,
+          guide_num:data.driverAndGuideNum,
+          guide_name:data.guideNameForChina,
+          guide_name_py:data.guideNameForEng,
+          guide_gender:data.guideSex[0],
+          guide_mobile:data.guideTel,
+          guide_weixin:data.guideWeChat,
+          guide_email:data.guideEmail,
+          pay_method:'微信',
+        }
+        request('tour/collection/add',option, 'GET')
+          .then((data)=> {
+            if(data.data.code >= 0) {
+              location.href = '#/ShoppingStoreResult?id=0';
+            } else {
+              location.href = '#/ShoppingStoreResult?id=1';
+            }
+          })
       } else {
         if(error.outlet) {
           this.setState({
@@ -81,6 +116,9 @@ class ShoppingStoreComponent extends React.Component {
             content:'导游性别'
           })
         }
+        this.setState({
+          buttonLoading:false
+        })
       }
     });
   }
@@ -114,7 +152,6 @@ class ShoppingStoreComponent extends React.Component {
                 { required: true, message: '必须选择一个日期！' }
               ],
             })}
-            format='YYYY-MM-DD'
             error={!!getFieldError('date')}
           >
             <List.Item arrow="horizontal">日期</List.Item>
