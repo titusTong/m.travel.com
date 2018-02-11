@@ -4,7 +4,7 @@ import { ListView,WhiteSpace,Badge,ActivityIndicator,NoticeBar } from 'antd-mobi
 import CarouselView from '../../components/Carousel/CarouselView';
 import Search from '../../components/Search/Search';
 import request from '../../utils/request';
-import './Index.css'
+import './Index.css';
 
 function MyBody(props) {
   return (
