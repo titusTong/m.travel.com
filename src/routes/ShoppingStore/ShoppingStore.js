@@ -94,9 +94,9 @@ class ShoppingStoreComponent extends React.Component {
         request('tour/collection/add',option, 'GET')
           .then((data)=> {
             if(data.data.code >= 0) {
-              location.href = '#/ShoppingStoreResult?id=0';
-            } else {
               location.href = '#/ShoppingStoreResult?id=1';
+            } else {
+              location.href = '#/ShoppingStoreResult?id=0';
             }
           })
       } else {

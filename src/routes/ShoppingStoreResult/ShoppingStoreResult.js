@@ -1,7 +1,7 @@
 import React from 'react';
 import {Result, Icon} from 'antd-mobile';
 import getParams from '../../utils/getParams';
-
+import './ShoppingStoreResult.css';
 
 export default class ShoppingStoreResult extends React.Component {
   constructor (props) {
@@ -14,7 +14,7 @@ export default class ShoppingStoreResult extends React.Component {
     }
   }
   componentWillMount () {
-    if(getParams('id')) {
+    if(getParams('id')==='0') {
       this.setState({
         type:'cross-circle-o',
         fill:'#F13642',
