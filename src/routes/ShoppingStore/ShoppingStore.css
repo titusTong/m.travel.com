@@ -1,0 +1,12 @@
+.shoppingStore .am-list-item .am-list-line .am-list-extra {
+  flex-basis: 63%;
+}
+
+.shoppingSubmit {
+  border-radius: 0.1rem;
+  background-color: #108ee9;
+  border: 1px solid #108ee9;
+  position:fixed;
+  bottom:0;
+  width: 95%;
+}
