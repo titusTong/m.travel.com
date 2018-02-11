@@ -4,10 +4,6 @@
     "start": "roadhog server",
     "build": "roadhog build",
     "lint": "eslint --ext .js src test",
-<<<<<<< HEAD
-    "precommit": "npm run lint",
-=======
->>>>>>> effc13a0acd116e79d65cb23475d86ac31072b07
     "server": "pm2 start ./bin/www --watch"
   },
   "engines": {
