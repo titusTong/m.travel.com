@@ -38,10 +38,16 @@ const sexArr = [
   {label:'男', value:'男'},
   {label:'女', value:'女'}
 ];
-const payTypeArr = [
+const payMethodType = [
   {label:'微信', value:'微信'},
-  {label:'支付宝', value:'支付宝'}
+  {label:'支付宝', value:'支付宝'},
+  {label:'转账', value:'转账'}
 ];
+
+const touristType = [
+  {label:'Leisure', value:'Leisure'},
+  {label:'Mice', value:'Mice'}
+]
 
 function formatDate(date) {
   /* eslint no-confusing-arrow: 0 */
@@ -60,7 +66,7 @@ class ShoppingStoreComponent extends React.Component {
       visible:false,
       content:'',
       buttonLoading:false,
-
+      bankMsgShow:false
     }
   }
   componentWillMount () {
@@ -81,6 +87,7 @@ class ShoppingStoreComponent extends React.Component {
           outlet_name:data.outlet[0],
           date:data.date.split(' ')[0],
           time:data.date.split(' ')[1],
+          tourist_type:data.touristType,
           tourist_num:data.touristNum,
           guide_num:data.driverAndGuideNum,
           guide_name:data.guideNameForChina,
@@ -89,7 +96,12 @@ class ShoppingStoreComponent extends React.Component {
           guide_mobile:data.guideTel,
           guide_weixin:data.guideWeChat,
           guide_email:data.guideEmail,
-          pay_method:'微信',
+          pay_method:data.payMethod,
+        }
+        if(this.state.bankMsgShow) {
+          option.bank_name = data.bankName;
+          option.bank_account = data.bankAccount;
+          option.bank_sort_code = data.bankSortCode;
         }
         request('tour/collection/add',option, 'GET')
           .then((data)=> {
@@ -110,10 +122,20 @@ class ShoppingStoreComponent extends React.Component {
             visible:true,
             content:'日期'
           })
+        } else if (error.touristType) {
+          this.setState({
+            visible:true,
+            content:'团队类型'
+          })
         } else if(error.guideSex) {
           this.setState({
             visible:true,
             content:'导游性别'
+          })
+        } else if (error.payMethod) {
+          this.setState({
+            visible:true,
+            content:'付款方式'
           })
         }
         this.setState({
@@ -126,6 +148,18 @@ class ShoppingStoreComponent extends React.Component {
     this.setState({
       visible:false
     })
+  }
+
+  payMthodOK = (e) => {
+    if(e[0] === '转账') {
+      this.setState({
+        bankMsgShow:true
+      })
+    } else {
+      this.setState({
+        bankMsgShow:false
+      })
+    }
   }
 
 
@@ -156,6 +190,17 @@ class ShoppingStoreComponent extends React.Component {
           >
             <List.Item arrow="horizontal">日期</List.Item>
           </DatePicker>
+          <WhiteSpace size="xs" />
+          <Picker data={touristType} cols={1} {...getFieldProps('touristType',{
+            rules: [
+              { required: true, message: '必须选择团队类型' }
+            ],
+          })} className="forss"
+            error={!!getFieldError('touristType')}
+          >
+            <List.Item arrow="horizontal">选择团队类型</List.Item>
+          </Picker>
+
           <WhiteSpace size="xs" />
           <InputItem
             {...getFieldProps('touristNum', {
@@ -250,6 +295,53 @@ class ShoppingStoreComponent extends React.Component {
             error={!!getFieldError('guideEmail')}
           >导游Email</InputItem>
           <WhiteSpace size="xs" />
+          <Picker data={payMethodType} cols={1} {...getFieldProps('payMethod',{
+            rules: [
+              { required: true, message: '必须选择付款方式' }
+            ],
+          })} className="forss"
+            error={!!getFieldError('payMethod')}
+            onOk={this.payMthodOK}
+          >
+            <List.Item arrow="horizontal">选择付款方式</List.Item>
+          </Picker>
+          <WhiteSpace size="xs" />
+          {
+            this.state.bankMsgShow ? <div>
+              <InputItem
+                {...getFieldProps('bankName', {
+                  rules: [
+                    { required: true, message: '必须填写开户行' }
+                  ],
+                })}
+                clear
+                labelNumber={9}
+                error={!!getFieldError('bankName')}
+              >开户行</InputItem>
+              <WhiteSpace size="xs" />
+              <InputItem
+                {...getFieldProps('bankAccount', {
+                  rules: [
+                    { required: true, message: '必须填写account' }
+                  ],
+                })}
+                clear
+                labelNumber={9}
+                error={!!getFieldError('bankAccount')}
+              >ACCOUNT</InputItem>
+              <WhiteSpace size="xs" />
+              <InputItem
+                {...getFieldProps('bankSortCode', {
+                  rules: [
+                    { required: true, message: '必须填写SORT CODE' }
+                  ],
+                })}
+                clear
+                labelNumber={9}
+                error={!!getFieldError('bankSortCode')}
+              >SORT CODE</InputItem>
+            </div> : null
+          }
           <Button className="shoppingSubmit" type="primary" onClick={this.onSubmit} >提交</Button>
 
 
