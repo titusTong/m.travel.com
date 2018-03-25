@@ -87,22 +87,23 @@ class ShoppingStoreComponent extends React.Component {
           outlet_name:data.outlet[0],
           date:data.date.split(' ')[0],
           time:data.date.split(' ')[1],
-          tourist_type:data.touristType,
+          tourist_type:data.touristType[0],
           tourist_num:data.touristNum,
           guide_num:data.driverAndGuideNum,
           guide_name:data.guideNameForChina,
           guide_name_py:data.guideNameForEng,
-          guide_gender:data.guideSex[0],
+          guide_gender:data.guideSex[0] === '男' ? '1' : '2',
           guide_mobile:data.guideTel,
           guide_weixin:data.guideWeChat,
           guide_email:data.guideEmail,
-          pay_method:data.payMethod,
+          pay_method:data.payMethod[0],
         }
         if(this.state.bankMsgShow) {
           option.bank_name = data.bankName;
           option.bank_account = data.bankAccount;
           option.bank_sort_code = data.bankSortCode;
         }
+        console.log(option);
         request('tour/collection/add',option, 'GET')
           .then((data)=> {
             if(data.data.code >= 0) {
